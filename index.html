@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadBiz Agency — Fill Your Certification Academy Batches</title>
+<meta name="description" content="LeadBiz Agency sends fitness & wellness certification academies qualified, enrollment-ready inquiries — not cheap clicks. Meta Ads management built for full batches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#101014;
+    --bg-3:#16161c;
+    --surface:#1a1a22;
+    --surface-2:#202029;
+    --border:#2a2a35;
+    --border-2:#34343f;
+    --text:#f4f4f6;
+    --text-2:#b6b6c2;
+    --text-3:#82828f;
+    --accent:#ff3b30;
+    --accent-2:#ff6a2b;
+    --amber:#ffb020;
+    --accent-glow:rgba(255,59,48,.35);
+    --radius:16px;
+    --radius-sm:10px;
+    --maxw:1080px;
+    --shadow:0 20px 60px -20px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;width:100%}
+  section{position:relative}
+
+  h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:800}
+  h1{font-size:clamp(2rem,6.2vw,4rem);font-weight:900}
+  h2{font-size:clamp(1.6rem,4.6vw,2.7rem)}
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    margin-bottom:18px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    font-family:inherit;font-size:1.05rem;font-weight:700;
+    color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    border:none;border-radius:999px;
+    padding:18px 34px;
+    cursor:pointer;
+    transition:transform .15s ease,box-shadow .25s ease,filter .2s ease;
+    box-shadow:0 12px 34px -10px var(--accent-glow);
+    text-align:center;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 18px 44px -10px var(--accent-glow);filter:brightness(1.05)}
+  .btn:active{transform:translateY(0)}
+  .btn-lg{font-size:1.15rem;padding:20px 40px}
+  .btn-wa{
+    background:linear-gradient(135deg,#25d366,#1ebe57);
+    box-shadow:0 12px 34px -10px rgba(37,211,102,.45);
+  }
+  .btn-block{display:flex;width:100%}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:clamp(70px,14vh,140px) 0 clamp(60px,10vh,110px);
+    text-align:center;
+    background:
+      radial-gradient(900px 500px at 50% -10%,rgba(255,59,48,.18),transparent 60%),
+      radial-gradient(700px 400px at 90% 10%,rgba(255,176,32,.10),transparent 55%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(transparent,var(--bg));
+    opacity:.4;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:600;color:var(--text-2);
+    background:var(--surface);border:1px solid var(--border);
+    padding:8px 16px;border-radius:999px;margin-bottom:26px;
+  }
+  .hero .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
+  .hero h1{max-width:18ch;margin:0 auto}
+  .hero h1 .hl{
+    background:linear-gradient(120deg,var(--accent),var(--amber));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p.sub{
+    font-size:clamp(1.05rem,2.4vw,1.3rem);
+    color:var(--text-2);
+    max-width:60ch;margin:24px auto 38px;
+  }
+
+  /* ---------- Section spacing ---------- */
+  .pad{padding:clamp(64px,9vh,110px) 0}
+  .center{text-align:center}
+  .section-head{max-width:42ch;margin:0 auto}
+
+  /* ---------- Pain ---------- */
+  .pain{background:var(--bg-2);border-top:1px solid var(--border)}
+  .pain-list{
+    list-style:none;max-width:780px;margin:40px auto 0;
+    display:grid;gap:14px;
+  }
+  .pain-list li{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:18px 20px;
+    font-size:1.05rem;color:var(--text);
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .pain-list li:hover{border-color:var(--border-2);transform:translateX(3px)}
+  .pain-list li .x{
+    flex:0 0 26px;height:26px;border-radius:50%;
+    display:grid;place-items:center;
+    background:rgba(255,59,48,.12);color:var(--accent);
+    font-weight:800;font-size:.95rem;margin-top:1px;
+  }
+  .pain-close{
+    text-align:center;max-width:48ch;margin:42px auto 0;
+    font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:700;
+    color:var(--text);
+  }
+  .pain-close b{color:var(--amber)}
+
+  /* ---------- Differentiator ---------- */
+  .diff{
+    background:
+      radial-gradient(700px 400px at 15% 0%,rgba(255,106,43,.12),transparent 60%),
+      var(--bg);
+    border-top:1px solid var(--border);
+    text-align:center;
+  }
+  .diff h2{max-width:20ch;margin:0 auto}
+  .diff p{max-width:58ch;margin:26px auto 0;font-size:clamp(1.05rem,2.3vw,1.25rem);color:var(--text-2)}
+
+  /* ---------- Proof ---------- */
+  .proof{background:var(--bg-2);border-top:1px solid var(--border)}
+  .proof .tag{
+    display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.04em;
+    color:var(--amber);background:rgba(255,176,32,.1);
+    border:1px solid rgba(255,176,32,.25);
+    padding:6px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  .stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+    margin:44px auto 0;max-width:880px;
+  }
+  .stat{
+    background:linear-gradient(160deg,var(--surface),var(--bg-3));
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:26px 22px;
+    position:relative;overflow:hidden;
+    text-align:left;
+  }
+  .stat::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--amber));
+  }
+  .stat .num{
+    font-size:clamp(1.8rem,5vw,2.5rem);font-weight:900;
+    letter-spacing:-.03em;line-height:1;
+    background:linear-gradient(120deg,#fff,var(--text-2));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .stat .lbl{margin-top:10px;color:var(--text-3);font-size:.92rem;font-weight:500}
+  .stat .spark{
+    position:absolute;right:18px;bottom:14px;opacity:.5;
+  }
+  .proof-foot{text-align:center;margin:36px auto 0;color:var(--text-2);font-size:1.05rem}
+  .proof-foot b{color:var(--text)}
+
+  /* ---------- Form ---------- */
+  .form-sec{
+    background:
+      radial-gradient(800px 500px at 50% 0%,rgba(255,59,48,.10),transparent 60%),
+      var(--bg);
+    border-top:1px solid var(--border);
+  }
+  .form-card{
+    max-width:620px;margin:38px auto 0;
+    background:linear-gradient(180deg,var(--surface),var(--bg-3));
+    border:1px solid var(--border-2);
+    border-radius:22px;
+    padding:clamp(26px,4vw,44px);
+    box-shadow:var(--shadow);
+  }
+  .field{margin-bottom:20px}
+  .field label{
+    display:block;font-size:.9rem;font-weight:600;
+    color:var(--text-2);margin-bottom:9px;
+  }
+  .field label .req{color:var(--accent)}
+  .field input,.field select{
+    width:100%;font-family:inherit;font-size:1rem;color:var(--text);
+    background:var(--bg-2);
+    border:1px solid var(--border-2);
+    border-radius:var(--radius-sm);
+    padding:15px 16px;
+    transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+    appearance:none;-webkit-appearance:none;
+  }
+  .field input::placeholder{color:var(--text-3)}
+  .field input:focus,.field select:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:var(--bg-3);
+    box-shadow:0 0 0 4px var(--accent-glow);
+  }
+  .field select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2382828f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    padding-right:42px;
+    cursor:pointer;
+  }
+  .field select option{background:var(--bg-2);color:var(--text)}
+  .field.invalid input,.field.invalid select{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(255,59,48,.18);
+  }
+  .err-msg{
+    display:none;color:var(--accent);font-size:.82rem;margin-top:7px;font-weight:500;
+  }
+  .field.invalid .err-msg{display:block}
+  .form-micro{
+    text-align:center;color:var(--text-3);font-size:.88rem;margin-top:16px;
+  }
+  .form-card .btn{margin-top:6px}
+
+  /* ---------- Thank you ---------- */
+  .ty{
+    display:none;
+    background:
+      radial-gradient(800px 500px at 50% 0%,rgba(37,211,102,.12),transparent 60%),
+      var(--bg);
+    border-top:1px solid var(--border);
+    text-align:center;
+  }
+  .ty .check{
+    width:78px;height:78px;border-radius:50%;margin:0 auto 26px;
+    display:grid;place-items:center;
+    background:rgba(37,211,102,.14);
+    border:1px solid rgba(37,211,102,.4);
+    color:#25d366;
+    animation:pop .5s cubic-bezier(.2,.8,.3,1.2) both;
+  }
+  @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+  .ty h2{max-width:18ch;margin:0 auto}
+  .ty p{max-width:52ch;margin:20px auto 34px;color:var(--text-2);font-size:1.1rem}
+  .ty .btn{max-width:420px;margin:0 auto}
+  .ty-note{margin-top:18px;color:var(--text-3);font-size:.88rem}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--bg-2);border-top:1px solid var(--border)}
+  .faq-list{max-width:760px;margin:40px auto 0;display:grid;gap:12px}
+  details{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    overflow:hidden;
+    transition:border-color .2s ease;
+  }
+  details[open]{border-color:var(--border-2)}
+  summary{
+    list-style:none;cursor:pointer;
+    padding:20px 22px;
+    font-weight:600;font-size:1.05rem;color:var(--text);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary .chev{
+    flex:0 0 auto;color:var(--accent-2);transition:transform .25s ease;font-size:1.3rem;line-height:1;
+  }
+  details[open] summary .chev{transform:rotate(45deg)}
+  details .ans{
+    padding:0 22px 22px;color:var(--text-2);font-size:1rem;line-height:1.6;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final{
+    text-align:center;
+    background:
+      radial-gradient(700px 420px at 50% 120%,rgba(255,59,48,.20),transparent 60%),
+      var(--bg);
+    border-top:1px solid var(--border);
+  }
+  .final h2{max-width:20ch;margin:0 auto}
+  .final p{max-width:54ch;margin:24px auto 36px;color:var(--text-2);font-size:clamp(1.05rem,2.3vw,1.2rem)}
+  .final-micro{margin-top:18px;color:var(--text-3);font-size:.88rem}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:34px 0;text-align:center;color:var(--text-3);font-size:.85rem;
+    background:var(--bg);
+  }
+  footer b{color:var(--text-2)}
+
+  /* ---------- Responsive ---------- */
+  @media(min-width:720px){
+    .stats{grid-template-columns:repeat(4,1fr)}
+  }
+  @media(max-width:520px){
+    .btn{width:100%}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span> Meta Ads for Certification Academies</span>
+    <h1>Your Certification Academy Is Losing Seats to <span class="hl">Bad Leads</span>, Not Bad Marketing</h1>
+    <p class="sub">Every month you run ads, get "interested" messages, and still end batches half-empty. The problem isn't reach. It's who's reaching you.</p>
+    <a href="#lead-form" class="btn btn-lg">See If We Can Fill Your Next Batch →</a>
+  </div>
+</header>
+
+<!-- 2. PAIN POINTS -->
+<section class="pain pad">
+  <div class="wrap">
+    <div class="center"><h2 class="section-head">Sound Familiar?</h2></div>
+    <ul class="pain-list">
+      <li><span class="x">✕</span><span>You get WhatsApp messages saying "send details" — then silence.</span></li>
+      <li><span class="x">✕</span><span>Your telecaller spends hours chasing people who were never going to enroll.</span></li>
+      <li><span class="x">✕</span><span>Leads ask about price, ghost, and never mention it again.</span></li>
+      <li><span class="x">✕</span><span>Your batch start date is locked. Empty seats don't wait for a better lead next month.</span></li>
+      <li><span class="x">✕</span><span>You're paying for ad clicks, not admissions.</span></li>
+    </ul>
+    <p class="pain-close">Cheap clicks feel like progress. They're not. <b>A full batch is progress.</b></p>
+  </div>
+</section>
+
+<!-- 3. WHAT WE DO DIFFERENTLY -->
+<section class="diff pad">
+  <div class="wrap">
+    <span class="eyebrow">What We Do Differently</span>
+    <h2>We Don't Send You Clicks. We Send You People Ready to Enroll.</h2>
+    <p>Every inquiry below answers real questions before they reach you — what course, what timeline, what's stopping them right now. No more guessing who's serious.</p>
+  </div>
+</section>
+
+<!-- 4. PROOF -->
+<section class="proof pad">
+  <div class="wrap center">
+    <span class="tag">Case Study</span>
+    <h2 class="section-head">This Worked for SFSA — Hyderabad</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">143</div>
+        <div class="lbl">leads in month one</div>
+      </div>
+      <div class="stat">
+        <div class="num">₹45</div>
+        <div class="lbl">cost per lead</div>
+      </div>
+      <div class="stat">
+        <div class="num">25+</div>
+        <div class="lbl">confirmed admissions</div>
+      </div>
+      <div class="stat">
+        <div class="num">₹4.8L+</div>
+        <div class="lbl">revenue from a single batch cycle</div>
+      </div>
+    </div>
+    <p class="proof-foot">Same model. Same filtering. <b>Your academy, your batch.</b></p>
+  </div>
+</section>
+
+<!-- 5. QUALIFYING FORM -->
+<section class="form-sec pad" id="lead-form">
+  <div class="wrap center">
+    <span class="eyebrow">Get Started</span>
+    <h2 class="section-head">Tell Us About Your Academy — Takes 40 Seconds</h2>
+  </div>
+  <form class="form-card" id="academy-form" novalidate>
+    <div class="field" id="f-name">
+      <label for="name">Your Name <span class="req">*</span></label>
+      <input type="text" id="name" name="name" placeholder="e.g. Rahul Sharma" required autocomplete="name">
+      <span class="err-msg">Please enter your name.</span>
+    </div>
+    <div class="field" id="f-phone">
+      <label for="phone">Phone Number <span class="req">*</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. 98765 43210" required autocomplete="tel" inputmode="tel">
+      <span class="err-msg">Please enter a valid phone number.</span>
+    </div>
+    <div class="field" id="f-academy">
+      <label for="academy">Academy / Institute Name <span class="req">*</span></label>
+      <input type="text" id="academy" name="academy" placeholder="e.g. Apex Fitness Academy" required>
+      <span class="err-msg">Please enter your academy name.</span>
+    </div>
+    <div class="field" id="f-course">
+      <label for="course">Course You Want to Fill Seats For <span class="req">*</span></label>
+      <select id="course" name="course" required>
+        <option value="" disabled selected>Select a course</option>
+        <option value="Personal Training Cert">Personal Training Cert</option>
+        <option value="Yoga TTC">Yoga TTC</option>
+        <option value="Nutrition Course">Nutrition Course</option>
+        <option value="Sports Coaching">Sports Coaching</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="err-msg">Please select a course.</span>
+    </div>
+    <div class="field" id="f-enroll">
+      <label for="enroll">Current Monthly Enrollments <span class="req">*</span></label>
+      <select id="enroll" name="enroll" required>
+        <option value="" disabled selected>Select a range</option>
+        <option value="0-5">0–5</option>
+        <option value="6-15">6–15</option>
+        <option value="16-30">16–30</option>
+        <option value="30+">30+</option>
+      </select>
+      <span class="err-msg">Please select your current enrollments.</span>
+    </div>
+    <div class="field" id="f-stop">
+      <label for="stop">What's Stopping You From Filling More Seats? <span class="req">*</span></label>
+      <select id="stop" name="stop" required>
+        <option value="" disabled selected>Select one</option>
+        <option value="Not enough inquiries">Not enough inquiries</option>
+        <option value="Inquiries don't convert">Inquiries don't convert</option>
+        <option value="No consistent ad system">No consistent ad system</option>
+        <option value="Don't run ads currently">Don't run ads currently</option>
+      </select>
+      <span class="err-msg">Please select an option.</span>
+    </div>
+    <button type="submit" class="btn btn-block btn-lg">Check My Eligibility →</button>
+    <p class="form-micro">We respond within a few hours. No spam, no recycled leads.</p>
+  </form>
+</section>
+
+<!-- 6. THANK YOU STATE -->
+<section class="ty pad" id="thank-you">
+  <div class="wrap">
+    <div class="check">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Got It. One Step Left.</h2>
+    <p>Tap below to confirm on WhatsApp — we'll review your answers and tell you exactly how many admissions this could realistically bring.</p>
+    <a href="#" class="btn btn-wa btn-lg btn-block" id="wa-cta" target="_blank" rel="noopener">Confirm on WhatsApp →</a>
+    <p class="ty-note">This opens WhatsApp with your details pre-filled — just hit send.</p>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="faq pad">
+  <div class="wrap">
+    <div class="center"><h2 class="section-head">Questions Academy Owners Ask Before Starting</h2></div>
+    <div class="faq-list">
+      <details>
+        <summary>Do I need to run my own ads? <span class="chev">+</span></summary>
+        <div class="ans">No. We handle targeting, creatives, and ad spend management end-to-end. You only need to approve creative direction.</div>
+      </details>
+      <details>
+        <summary>What if I don't have content or photos to use? <span class="chev">+</span></summary>
+        <div class="ans">We work with whatever you have — even basic phone footage or existing brochures. No content shoots required.</div>
+      </details>
+      <details>
+        <summary>Do you guarantee admissions? <span class="chev">+</span></summary>
+        <div class="ans">No one honestly can. What we guarantee is qualified inquiries — people who match your course, budget, and timeline. Admissions depend on your counseling/closing, same as SFSA.</div>
+      </details>
+      <details>
+        <summary>How fast do leads start coming in? <span class="chev">+</span></summary>
+        <div class="ans">Most academies see inquiries within the first 5–7 days of campaign launch.</div>
+      </details>
+      <details>
+        <summary>Is there a minimum commitment? <span class="chev">+</span></summary>
+        <div class="ans">Yes — 3 months minimum. Filtering and targeting improve as the campaign learns; month one is rarely the best month.</div>
+      </details>
+      <details>
+        <summary>Who pays for ad spend? <span class="chev">+</span></summary>
+        <div class="ans">Ad spend is billed directly to you by Meta. Our retainer covers strategy, creative, targeting, and lead filtering — not media cost.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FINAL CTA -->
+<section class="final pad">
+  <div class="wrap">
+    <h2>Stop Paying for Clicks. Start Paying for Admissions.</h2>
+    <p>Every month you wait is a batch cycle with empty seats. The academies filling batches consistently aren't running better ads — they're filtering better leads.</p>
+    <a href="#lead-form" class="btn btn-lg">Check My Eligibility →</a>
+    <p class="final-micro">Takes 40 seconds. No cost, no obligation to start.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>LeadBiz Agency</b> — Meta Ads management for fitness &amp; wellness certification academies.</p>
+    <p style="margin-top:6px">© <span id="year"></span> LeadBiz Agency. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- CONFIG: replace with the real WhatsApp number (country code + number, digits only) ----
+  var WHATSAPP_NUMBER = '91XXXXXXXXXX';
+
+  var form = document.getElementById('academy-form');
+  var formSec = document.querySelector('.form-sec');
+  var thankYou = document.getElementById('thank-you');
+  var waCta = document.getElementById('wa-cta');
+
+  // Clear invalid state as the user fixes a field
+  form.querySelectorAll('input, select').forEach(function(el){
+    var evt = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(evt, function(){
+      el.closest('.field').classList.remove('invalid');
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // Validate required fields
+    var firstInvalid = null;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var field = el.closest('.field');
+      if(!el.value || !el.value.trim()){
+        field.classList.add('invalid');
+        if(!firstInvalid) firstInvalid = el;
+      } else {
+        field.classList.remove('invalid');
+      }
+    });
+
+    if(firstInvalid){
+      firstInvalid.focus();
+      return;
+    }
+
+    // Capture form values
+    var name       = document.getElementById('name').value.trim();
+    var phone      = document.getElementById('phone').value.trim();
+    var academy    = document.getElementById('academy').value.trim();
+    var course     = document.getElementById('course').value;
+    var enrollment = document.getElementById('enroll').value;
+    var stopping   = document.getElementById('stop').value;
+
+    // Build the WhatsApp message
+    var message = 'Hi, I just submitted the academy form - ' + academy +
+                  ', looking to fill seats for ' + course +
+                  '. Current enrollments: ' + enrollment +
+                  '. Main issue: ' + stopping + '.';
+
+    var waLink = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    waCta.setAttribute('href', waLink);
+
+    // Swap to thank-you state
+    formSec.style.display = 'none';
+    thankYou.style.display = 'block';
+
+    // Bring the thank-you into view
+    thankYou.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+</body>
+</html>
